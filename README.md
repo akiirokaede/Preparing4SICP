@@ -4,3 +4,15 @@
 仅在 MIT-Scheme 环境下测试过。
 
 原谅我糟糕的局部变量命名和文件名吧（哭）
+
+书中 Higher Order Functions 一节中的 member-if and member 小节，member-if 函数应该是：
+
+```scheme
+(define (member-if proc ls)
+  (cond
+   ((null? ls) '())
+   ((proc (car ls)) (cons (car ls) (member-if proc (cdr ls))))
+   (else (member-if proc (cdr ls)))))
+```
+
+这样才符合这个函数的目的。
